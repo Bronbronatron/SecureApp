@@ -1,15 +1,23 @@
 package com.bron.demoJPA.appuser;
 
+
 import java.util.Collection;
 import java.util.Collections;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -21,17 +29,19 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @EqualsAndHashCode
 @Entity
+@ToString(exclude = "opening")
+@Table(name = "Rest_info"
+
+)
 
 public class AppUser implements UserDetails { 
-	
-	
-	//Define primary key
 	@Id
 	//Auto generate primary key
 	@SequenceGenerator(name = "user_sequence", sequenceName = "user_sequence", allocationSize = 1)
@@ -39,56 +49,46 @@ public class AppUser implements UserDetails {
 			strategy = GenerationType.SEQUENCE,
 			generator = "user_sequence"
 				)
-	
+	@Column(name ="Rest_ID")
 	private long id;
+	
+	@Column(
+			name ="Rest_Name")
 	private String restaurantName;
-	private String email;
+	
+	@Embedded
+	private  Address address; 
+	
+	@Column(name ="Rest_Phone_Number")
+	private String phoneNumber;
+	
+	@Column(name ="Rest_Password")
 	private String password;
+	
+	@Column(name ="Rest_Email_Address")
+	private String email;
+	
 	@Enumerated(EnumType.STRING)
 	private AppUserRole appUserRole;
 	private  Boolean locked = false;
 	//don't enable user until email verification
 	private Boolean enabled = false;
 
-	/*
-	private String addressOne;
-	private String addressTwo;
-	private String Town;
-	private String City;
-	private String Postcode;
-	private String PhoneNumber;
-	*/
 
 	
-	
-	
 	public AppUser(
-			
 			String restname,
 			String email, 
 			String pass,
-			AppUserRole app) {
-
-	//	String ad1, String ad2, String town, String city, 
-	//	String postcode, String num, AppUserRole appUserRole
-		
+			AppUserRole app) {		
 		this.restaurantName = restname;
 		this.email = email;
 		this.password = pass;
 		this.appUserRole = app;
-		/*
-		this.addressOne = ad1;
-		this.addressTwo = ad2;
-		this.Town = town;
-		this.City = city;
-		this.Postcode = postcode;
-		this.PhoneNumber = num;
-		*/
 	}
 	
 
 
-	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		SimpleGrantedAuthority authority = new SimpleGrantedAuthority(appUserRole.name());
 		return Collections.singletonList(authority);
@@ -111,13 +111,11 @@ public class AppUser implements UserDetails {
 
 	@Override
 	public boolean isAccountNonLocked() {
-		// TODO Auto-generated method stub
 		return !locked;
 	}
 
 	@Override
 	public boolean isCredentialsNonExpired() {
-		// TODO Auto-generated method stub
 		return true;
 	}
 
@@ -126,4 +124,14 @@ public class AppUser implements UserDetails {
 		return enabled;
 	}
 
+	@OneToOne(
+			cascade = CascadeType.ALL,
+			fetch = FetchType.LAZY,
+			optional = true
+			)
+	
+	@JoinColumn(
+			name = "openingHourID",
+			referencedColumnName = "OpeningHour_ID")
+	private OpeningHour opening; 
 }

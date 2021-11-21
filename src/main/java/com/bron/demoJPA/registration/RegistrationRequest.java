@@ -1,27 +1,28 @@
 package com.bron.demoJPA.registration;
 
-import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-@AllArgsConstructor
 @EqualsAndHashCode
 @ToString
 @Getter
+@NoArgsConstructor
+
 
 public class RegistrationRequest {
-	private final String restaurantName;
-	private final String email;
-	private final String password;
+	private  String restaurantName;
+	private  String email;
+	private  String password;
 
+
+	public RegistrationRequest(String restaurantName, String email, String password) {
+		super();
+		this.restaurantName = restaurantName;
+		this.email = email;
+		this.password = password;
+	}
 	
-	/*
-	private final String addressOne;
-	private final String addressTwo;
-	private final String Town;
-	private final String City;
-	private final String Postcode;
-	private final String PhoneNumber;
-	*/
+	
 }

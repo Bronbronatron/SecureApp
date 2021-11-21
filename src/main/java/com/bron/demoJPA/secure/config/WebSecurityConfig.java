@@ -19,11 +19,11 @@ import com.bron.demoJPA.appuser.AppUserService;
 
 import lombok.AllArgsConstructor;
 
-@Configuration 
+@Configuration
 @AllArgsConstructor
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-
+//-------------
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		// TODO Auto-generated method stub
@@ -38,8 +38,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.authenticationProvider(daoAuthenticationProvider());
 	}
-	
-	
+
 	@Bean
 	public DaoAuthenticationProvider daoAuthenticationProvider() {
 
@@ -49,6 +48,5 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		return provider;
 
 	}
-	
 
 }

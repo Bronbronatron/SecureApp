@@ -1,4 +1,5 @@
- package com.bron.demoJPA.registration;
+
+package com.bron.demoJPA.registration;
 
 import java.util.function.Predicate;
 

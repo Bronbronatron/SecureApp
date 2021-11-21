@@ -16,7 +16,7 @@ public interface UserRespository extends JpaRepository<AppUser, Long> {
 	    @Transactional
 	    @Modifying
 		@Query(
-				value = "update app_user set enabled = 1 where email = ?1",
+				value = "update rest_info set enabled = 1 where rest_Email_Address= ?1",
 				nativeQuery = true
 				)
 		  int enableAppUser(String email);
