@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+
+<head>
+
+<title>Dish Management System</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+
+</head>
+<body>
+	<class="container-2"> <a th:href="@{/showNewDishForm}"
+		class="btn btn-primary btn-sm mb-3"> Add Dish </a>
+
+	<h1>Dish List</h1>
+	<table border="1" class="table table-striped table-responsive-md">
+		<thead>
+			<tr>
+				<th>Dish Name</th>
+				<th>Dish description</th>
+				<th>Dish Price</th>
+			</tr>
+
+
+		</thead>
+		<tbody>
+			<tr th:each="dish : ${listDish}">
+				<td th:text="${dish.dname}"></td>
+				<td th:text="${dish.description}"></td>
+				<td th:text="${dish.price}"></td>
+				<td><a th:href="@{/showFormForUpdate/{id}(id=${dish.dishId})}"
+					class="btn btn-primary">Update</a>
+			</tr>
+		</tbody>
+	</table>
+	</div>
+</body>
+
+
+</html>

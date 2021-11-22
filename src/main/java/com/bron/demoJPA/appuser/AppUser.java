@@ -38,7 +38,6 @@ import lombok.ToString;
 @Entity
 @ToString(exclude = "opening")
 @Table(name = "Rest_info"
-
 )
 
 public class AppUser implements UserDetails { 

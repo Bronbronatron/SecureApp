@@ -30,7 +30,10 @@ public class MainController {
 	
 	@GetMapping(path="/api/v1/registration/new")
 	 public String showRegistrationForm(Model model){
-		model.addAttribute("appUser", new AppUser());
+		//make model to bind form data
+		//Thymeleaf template will access to bind form data
+		AppUser appUser = new AppUser();
+		model.addAttribute("appUser", appUser);
 		 return "registration";
 	 }
 	

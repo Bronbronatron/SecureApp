@@ -66,6 +66,7 @@ public class Dish {
 	@ManyToMany(
 			cascade = CascadeType.ALL
 			)
+	
   @JoinTable(name = "dish_requirment_mapping", joinColumns = @JoinColumn(name = "dish_Id", referencedColumnName = "dish_Id"), inverseJoinColumns = @JoinColumn(
    name = "Require_ID", referencedColumnName = "Require_ID"))
 	private List <Requirments> reqlist;
