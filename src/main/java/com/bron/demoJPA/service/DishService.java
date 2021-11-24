@@ -26,6 +26,8 @@ public interface DishService {
 	void saveDishById(Dish dish);
 	
 	public void saveDishWithUserId(Dish dish);
+
+	public void deleteDishById(long Id);
 	
 
 	

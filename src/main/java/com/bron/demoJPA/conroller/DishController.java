@@ -77,5 +77,13 @@ public class DishController {
 		return "update_dish";
 
 	}
+	
+	
+	@GetMapping("/deleteDish/{dishId}")
+	public String deleteDish(@PathVariable(value = "dishId") long dishId, Model model) {
+		this.dishService.deleteDishById(dishId);
+		return "redirect:/dish";
+		
+	}
 
 }

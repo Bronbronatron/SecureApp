@@ -60,8 +60,10 @@ public class DishServiceImpl implements DishService {
 		dish.setApp(app);
 		this.dishRepository.save(dish);
 	}
-
-
+	@Override
+	public void deleteDishById(long Id) {
+		this.dishRepository.deleteById(Id);
+	}
 
 	
 
