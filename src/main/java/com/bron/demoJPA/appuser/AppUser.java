@@ -1,6 +1,5 @@
 package com.bron.demoJPA.appuser;
 
-
 import java.util.Collection;
 import java.util.Collections;
 
@@ -37,56 +36,43 @@ import lombok.ToString;
 @EqualsAndHashCode
 @Entity
 @ToString(exclude = "opening")
-@Table(name = "Rest_info"
-)
+@Table(name = "Rest_info")
 
-public class AppUser implements UserDetails { 
+public class AppUser implements UserDetails {
 	@Id
-	//Auto generate primary key
+	// Auto generate primary key
 	@SequenceGenerator(name = "user_sequence", sequenceName = "user_sequence", allocationSize = 1)
-	@GeneratedValue(
-			strategy = GenerationType.SEQUENCE,
-			generator = "user_sequence"
-				)
-	@Column(name ="Rest_ID")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_sequence")
+	@Column(name = "Rest_ID")
 	private long id;
-	
-	@Column(
-			name ="Rest_Name")
+
+	@Column(name = "Rest_Name")
 	private String restaurantName;
-	
+
 	@Embedded
-	private  Address address; 
-	
-	@Column(name ="Rest_Phone_Number")
+	private Address address;
+
+	@Column(name = "Rest_Phone_Number")
 	private String phoneNumber;
-	
-	@Column(name ="Rest_Password")
+
+	@Column(name = "Rest_Password")
 	private String password;
-	
-	@Column(name ="Rest_Email_Address")
+
+	@Column(name = "Rest_Email_Address")
 	private String email;
-	
+
 	@Enumerated(EnumType.STRING)
 	private AppUserRole appUserRole;
-	private  Boolean locked = false;
-	//don't enable user until email verification
+	private Boolean locked = false;
+	// don't enable user until email verification
 	private Boolean enabled = false;
 
-
-	
-	public AppUser(
-			String restname,
-			String email, 
-			String pass,
-			AppUserRole app) {		
+	public AppUser(String restname, String email, String pass, AppUserRole app) {
 		this.restaurantName = restname;
 		this.email = email;
 		this.password = pass;
 		this.appUserRole = app;
 	}
-	
-
 
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		SimpleGrantedAuthority authority = new SimpleGrantedAuthority(appUserRole.name());
@@ -97,9 +83,9 @@ public class AppUser implements UserDetails {
 	public String getUsername() {
 		return email;
 	}
-	
+
 	@Override
-	public String getPassword() { 
+	public String getPassword() {
 		return password;
 	}
 
@@ -122,15 +108,8 @@ public class AppUser implements UserDetails {
 	public boolean isEnabled() {
 		return enabled;
 	}
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = true)
 
-	@OneToOne(
-			cascade = CascadeType.ALL,
-			fetch = FetchType.LAZY,
-			optional = true
-			)
-	
-	@JoinColumn(
-			name = "openingHourID",
-			referencedColumnName = "OpeningHour_ID")
-	private OpeningHour opening; 
+	@JoinColumn(name = "openingHourID", referencedColumnName = "OpeningHour_ID")
+	private OpeningHour opening;
 }

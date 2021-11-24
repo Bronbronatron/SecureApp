@@ -14,8 +14,7 @@
 		<hr>
 		<h2>Save Dish</h2>
 
-		<form action="#" th:action="@{/saveDish}" th:object="${dish}"
-			method="POST">
+		<form action="#" th:action="@{/saveDish}" th:object="${dish}" method="POST">
 			<input type="text" th:field="*{dname}"
 				placeholder="Dish Name" class="form-control mb-4 col-4">
 				

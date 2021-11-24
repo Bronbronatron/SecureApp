@@ -1,6 +1,7 @@
 package com.bron.demoJPA.registration;
 
 
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -15,12 +16,12 @@ import com.bron.demoJPA.appuser.AppUser;
 
 import lombok.AllArgsConstructor;
 
-@RestController
+
 @RequestMapping(path = "/api/v1/registration")
-
+@RestController
 @AllArgsConstructor
-
-public class RegistrationController {
+public class 
+RegistrationController {
 
 	private final RegistrationService registrationService;
 
@@ -70,7 +71,7 @@ public class RegistrationController {
 		return registrationService.confirmToken(token);
 	}
 	
-
+s
 	*/
 
 }

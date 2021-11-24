@@ -16,7 +16,6 @@ public class RegistrationRequest {
 	private  String email;
 	private  String password;
 
-
 	public RegistrationRequest(String restaurantName, String email, String password) {
 		super();
 		this.restaurantName = restaurantName;
