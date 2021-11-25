@@ -108,8 +108,12 @@ public class AppUser implements UserDetails {
 	public boolean isEnabled() {
 		return enabled;
 	}
-	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = true)
-
-	@JoinColumn(name = "openingHourID", referencedColumnName = "OpeningHour_ID")
+	
+	//need reference to restaurant info but one to one relationship 
+	//already defined by openingHour object in opening hour table
+	
+	@OneToOne(
+			mappedBy = "appUser"
+			)
 	private OpeningHour opening;
 }

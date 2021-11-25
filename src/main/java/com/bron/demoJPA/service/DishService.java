@@ -8,17 +8,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.bron.demoJPA.appuser.AppUser;
 import com.bron.demoJPA.appuser.Dish;
+import com.bron.demoJPA.appuser.OpeningHour;
 
 public interface DishService {
 
 	List<Dish> getAllDish();
 
-	
-	
-	//@Query(value = "SELECT * from dish r where r.rest_id= ?1", nativeQuery = true)
-	
-	
-	//List<Dish> getDishBy
 	void saveDish(Dish dish);
 
 	Dish getDishByDishId(long dishId);

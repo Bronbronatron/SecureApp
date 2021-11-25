@@ -26,14 +26,7 @@ public class DishController {
 	@Autowired
 	private DishRepository dishRepo;
 
-	/*
-	@GetMapping("/dish")
-	public String viewHomePage(Model model) {
-		model.addAttribute("listDish", dishService.getAllDish());
-		return "index";
-	}
-*/
-	
+
 	@GetMapping("/dish")
 	public String viewNewHomePage(Model model) {
 		AppUser user = (AppUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -58,16 +51,7 @@ public class DishController {
 			}
 		
 	
-	
-/*
-	@PostMapping("/saveDish")
-	public String saveDishById(@ModelAttribute("dish") Dish dish) {
-		// save dish to database
-		dishService.saveDish(dish);
-		return "redirect:/dish";
-	}
-*/
-	
+
 	@GetMapping("/showFormForUpdate/{dishId}")
 	public String showFormForUpdate(@PathVariable(value = "dishId") long dishId, Model model) {
 		// get dish from service

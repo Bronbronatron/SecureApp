@@ -1,9 +1,11 @@
 package com.bron.demoJPA.appuser;
 
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -29,13 +31,10 @@ import lombok.NoArgsConstructor;
 public class OpeningHour {
 	@Id
 	@SequenceGenerator(
-			name = "opening_hour_sequence",
-			sequenceName = "opening_hour_sequence",
-			allocationSize = 1)
+			name = "opening_hour_sequence", sequenceName = "opening_hour_sequence", allocationSize = 1)
 	
 	@GeneratedValue(
-			strategy = GenerationType.SEQUENCE,
-			generator = "opening_sequence")
+			strategy = GenerationType.SEQUENCE, generator = "opening_hour_sequence")
 	@Column(name ="OpeningHour_ID")
 	private Long openingHourID;	
 	
@@ -82,11 +81,11 @@ public class OpeningHour {
 	@Column(name ="Rest_Closing_Hour_Sunday")
 	private String closingHourSun;
 	
-	//need reference to restaurant info but one to one relationship 
-	//already defined by openingHour object in opening hour table
-	@OneToOne(
-			mappedBy = "opening"
-			)
+
+	@OneToOne(fetch = FetchType.LAZY, optional = true)
+		//	cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = true)
+
+	@JoinColumn(name = "id", referencedColumnName = "Rest_ID")
 	private AppUser appUser; 
 			
 			

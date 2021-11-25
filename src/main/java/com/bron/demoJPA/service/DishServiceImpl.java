@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import com.bron.demoJPA.appuser.AppUser;
 import com.bron.demoJPA.appuser.Dish;
+import com.bron.demoJPA.appuser.OpeningHour;
 import com.bron.demoJPA.repository.DishRepository;
 
 @Service
@@ -19,7 +20,7 @@ public class DishServiceImpl implements DishService {
 
 	// @Autowired
 	// AppUser appUser;
-	
+
 	@Autowired
 	private DishRepository dishRepository;
 
@@ -60,14 +61,10 @@ public class DishServiceImpl implements DishService {
 		dish.setApp(app);
 		this.dishRepository.save(dish);
 	}
+
 	@Override
 	public void deleteDishById(long Id) {
 		this.dishRepository.deleteById(Id);
 	}
 
-	
-
 }
-
-
-

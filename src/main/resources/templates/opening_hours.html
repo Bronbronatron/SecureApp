@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Opening Hours</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+</head>
+
+<body>
+
+	<form action="#" th:action="@{/saveOpeningHour}" th:object="${openinghour}"
+		method="POST">
+
+		<div class="container">
+			<h1>Opening Hours</h1>
+			
+				<hr>
+			
+
+			<div class="row">
+			<div class="col">
+					Closing Hours 
+					
+						<hr>
+					
+					
+					<input type="text" th:field="*{openingHourMon}"
+						placeholder="Monday" class="form-control mb-4 col-6">
+
+					<input type="text" th:field="*{openingHourTue}"
+						placeholder="Tuesday" class="form-control mb-4 col-6">
+
+					<input type="text" th:field="*{openingHourWed}"
+						placeholder="Wednesday" class="form-control mb-4 col-6">
+
+					<input type="text" th:field="*{openingHourThurs}"
+						placeholder="Thursday" class="form-control mb-4 col-6">
+
+					<input type="text" th:field="*{openingHourFri}"
+						placeholder="Friday" class="form-control mb-4 col-6">
+
+					<input type="text" th:field="*{openingHourSat}"
+						placeholder="Saturday" class="form-control mb-4 col-6">
+
+					<input type="text" th:field="*{openingHourSun}"
+						placeholder="Sunday" class="form-control mb-4 col-6">
+
+
+				</div>
+
+				<div class="col">
+				Opening Hours
+					<hr>
+				
+					
+					 <input type="text" th:field="*{closingHourMon}"
+						placeholder="Monday" class="form-control mb-4 col-6">
+
+					<input type="text" th:field="*{closingHourTue}"
+						placeholder="Tuesday" class="form-control mb-4 col-6">
+
+					<input type="text" th:field="*{closingHourWed}"
+						placeholder="Wednesday" class="form-control mb-4 col-6">
+
+					<input type="text" th:field="*{closingHourThurs}"
+						placeholder="Thursday" class="form-control mb-4 col-6">
+
+					<input type="text" th:field="*{closingHourFri}"
+						placeholder="Friday" class="form-control mb-4 col-6">
+
+					<input type="text" th:field="*{closingHourSat}"
+						placeholder="Saturday" class="form-control mb-4 col-6">
+
+					<input type="text" th:field="*{closingHourSun}"
+						placeholder="Sunday" class="form-control mb-4 col-6">
+
+
+				</div>
+			</div>
+		</div>
+
+		<button type="submit" class="btn btn-info col-2">Save Opening Hours</button>
+	</form>
+
+	<hr>
+
+	<a th:href="@{/dish}"> Back to Dish List</a>
+
+</body>
+</html>
