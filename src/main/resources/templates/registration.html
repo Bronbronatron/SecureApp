@@ -43,7 +43,7 @@
 				<h1>Registration</h1>
 
 				<form th:action="@{/api/v1/registration}" method="post"
-					th:object="${appUser}">
+					th:object="${request}">
 					<div class="form-group">
 						<label class="control-label" for="restaurantName"> Restaurant
 							Name </label> <input id="restaurantName" class="form-control"
@@ -62,7 +62,9 @@
 							id="password" class="form-control" type="password"
 							th:field="*{password}" required autofocus="autofocus" />
 					</div>
+					
 					<div class="form-group">
+					
 						<button type="submit" class="btn btn-success">Register</button>
 						<span>Already registered? <a href="/" th:href="@{/login}">Login
 								here</a></span>

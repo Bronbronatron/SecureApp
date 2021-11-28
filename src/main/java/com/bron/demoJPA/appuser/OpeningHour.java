@@ -83,7 +83,7 @@ public class OpeningHour {
 	
 
 	@OneToOne(fetch = FetchType.LAZY, optional = true)
-		//	cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = true)
+		//cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = true)
 
 	@JoinColumn(name = "id", referencedColumnName = "Rest_ID")
 	private AppUser appUser; 

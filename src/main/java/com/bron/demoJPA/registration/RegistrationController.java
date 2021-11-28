@@ -13,29 +13,56 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bron.demoJPA.appuser.AppUser;
+import com.bron.demoJPA.appuser.OpeningHour;
 
 import lombok.AllArgsConstructor;
 
 
 @RequestMapping(path = "/api/v1/registration")
 @RestController
+
+//@Controller
 @AllArgsConstructor
+
 public class 
 RegistrationController {
 
 	private final RegistrationService registrationService;
-
 
     @PostMapping
     public String register(@RequestBody RegistrationRequest request) {
         return registrationService.register(request);
     }
 
+
+
+	
     @GetMapping(path = "confirm")
     public String confirm(@RequestParam("token") String token) {
         return registrationService.confirmToken(token);
     }
-
+    
+    /*
+  
+    @GetMapping("/api/v1/registration/new")
+	public String ShowRegisterationForm (Model model) {
+		RegistrationRequest request = new RegistrationRequest();
+		model.addAttribute("request", request);
+		return "registration";
+	}
+	
+	
+	@PostMapping("/api/v1/registration")
+	public String registration(@ModelAttribute("request")RegistrationRequest request) {
+			registrationService.register(request);	
+			return "redirect:/dish";
+			}
+		
+    
+    
+    
+    
+    
 
 	
 	//HTTP Body Data is the data bytes transmitted in an HTTP transaction 

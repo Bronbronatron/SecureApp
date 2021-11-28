@@ -27,24 +27,5 @@ public class MainController {
 		return "restaurantHome";
 
 	}
-	
-
-	
-
-
-	@GetMapping(path="/api/v1/registration/new")
-	 public String showRegistrationForm(Model model){
-		//make model to bind form data
-		//Thymeleaf template will access to bind form data
-	//	AppUser appUser = new AppUser();
-		RegistrationRequest  request = new RegistrationRequest();
-		model.addAttribute("registrationRequest",  request);
-		 return "registration";
-	 }
-	
-	/*
-	 * 
-	 */
-	
 
 }

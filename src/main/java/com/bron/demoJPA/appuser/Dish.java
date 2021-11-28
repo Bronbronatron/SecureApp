@@ -26,7 +26,6 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@ToString(exclude = "reqlist")
 public class Dish {
 
 	@Id
@@ -46,20 +45,19 @@ public class Dish {
 	@Column(name = "dish_price")
 	private double price;
 
-	@ManyToOne()
-	//cascade = CascadeType.ALL)
+	@Column(name = "vegan_friendly")
+	private boolean vegan;
+	
+	@Column(name = "gluten_free")
+	private boolean glutenFree;
+
+	@Column(name = "Egg_free")
+	private boolean eggFree;
+
+	
+	@ManyToOne()//cascade = CascadeType.ALL)
 	@JoinColumn(name = "Rest_ID", referencedColumnName = "Rest_ID")
 	private AppUser app;
 
-	@ManyToMany(cascade = CascadeType.ALL)
 
-	@JoinTable(name = "dish_requirment_mapping", joinColumns = @JoinColumn(name = "dish_Id", referencedColumnName = "dish_Id"), inverseJoinColumns = @JoinColumn(name = "Require_ID", referencedColumnName = "Require_ID"))
-	private List<Requirments> reqlist;
-
-	public void addRequirments(Requirments req) {
-		if (reqlist == null)
-			reqlist = new ArrayList<>();
-		reqlist.add(req);
-
-	}
 }

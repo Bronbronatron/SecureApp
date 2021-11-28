@@ -15,7 +15,7 @@ import com.bron.demoJPA.service.OpeningHourService;
 
 @Controller
 public class OpeningHourController {
-	
+
 	@Autowired
 	private OpeningHourService openingHourService;
 	

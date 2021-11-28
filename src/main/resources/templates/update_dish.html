@@ -25,7 +25,23 @@
 				
 				<input type="text" th:field="*{price}" class="form-control mb-4 col-4">
 				
+					<div class="form-check form-check-inline">
+  
+   <label class="form-check-label" for="inlineCheckbox1">Vegan?</label>
+   <input type="checkbox" th:field="*{vegan}" />
+  
+   <label class="form-check-label" for="inlineCheckbox1">Gluten Free?</label>
+   <input type="checkbox" th:field="*{glutenFree}" />
+   
+   <label class="form-check-label" for="inlineCheckbox1">Egg Free?</label>
+   <input type="checkbox" th:field="*{EggFree}" />
+   </div>
+   
+   
+				
 				<button type="submit" class="btn btn-info col-2"> Update Dish</button>
+				
+				
 		</form>
 		
 		<hr>
