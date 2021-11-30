@@ -1,7 +1,7 @@
 package com.bron.demoJPA.registration;
 
 
-import org.springframework.stereotype.Controller;
+//import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -34,7 +34,8 @@ RegistrationController {
         return registrationService.register(request);
     }
 
-
+  
+  
 
 	
     @GetMapping(path = "confirm")
@@ -42,7 +43,7 @@ RegistrationController {
         return registrationService.confirmToken(token);
     }
     
-    /*
+  /*
   
     @GetMapping("/api/v1/registration/new")
 	public String ShowRegisterationForm (Model model) {
