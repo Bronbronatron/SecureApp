@@ -5,13 +5,14 @@ import com.bron.demoJPA.appuser.AppUserRole;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.ToString;
 
 @EqualsAndHashCode
 @ToString
 @Getter
 @NoArgsConstructor
-
+@Setter
 
 public class RegistrationRequest {
 	private  String restaurantName;

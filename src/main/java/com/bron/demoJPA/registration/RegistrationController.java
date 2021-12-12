@@ -1,6 +1,9 @@
 package com.bron.demoJPA.registration;
 
 
+import java.util.Optional;
+
+import org.springframework.stereotype.Controller;
 //import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,36 +17,24 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.bron.demoJPA.appuser.AppUser;
 import com.bron.demoJPA.appuser.OpeningHour;
+import com.bron.demoJPA.registration.token.ConfirmationToken;
+import com.bron.demoJPA.registration.token.ConfirmationTokenService;
 
 import lombok.AllArgsConstructor;
 
 
-@RequestMapping(path = "/api/v1/registration")
-@RestController
+//@RequestMapping(path = "/api/v1/registration")
+//@RestController
 
-//@Controller
+@Controller
 @AllArgsConstructor
 
 public class 
 RegistrationController {
 
 	private final RegistrationService registrationService;
+	//private final ConfirmationTokenService confirmationTokenService;
 
-    @PostMapping
-    public String register(@RequestBody RegistrationRequest request) {
-        return registrationService.register(request);
-    }
-
-  
-  
-
-	
-    @GetMapping(path = "confirm")
-    public String confirm(@RequestParam("token") String token) {
-        return registrationService.confirmToken(token);
-    }
-    
-  /*
   
     @GetMapping("/api/v1/registration/new")
 	public String ShowRegisterationForm (Model model) {
@@ -58,14 +49,18 @@ RegistrationController {
 			registrationService.register(request);	
 			return "redirect:/dish";
 			}
-		
-    
-    
-    
-    
-    
 
+  //@RequestMapping(path = "/api/v1/registration")
+  @GetMapping(path="/api/v1/registration/confirm")
+  public String confirm(@RequestParam("token") String token) {
+  return registrationService.confirmToken(token);
+  
+ }
+ 
 	
+	
+  
+    	
 	//HTTP Body Data is the data bytes transmitted in an HTTP transaction 
 	//Most HTTP requests with bodies use POST or PUT request method.
 	

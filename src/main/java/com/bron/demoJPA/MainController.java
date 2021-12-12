@@ -13,8 +13,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class MainController {
 
-	// public Map<String, AppUser> user = new HashMap<>();
-
 	@GetMapping("/home")
 	public String showRestaurantHomePage() {
 		return "restaurantHome";
@@ -28,11 +26,9 @@ public class MainController {
 	}
 	
 	@GetMapping("/admin")
-	public String admin() {	
-			return("Welcom Admin");
+	public String admin() {
+			return("restaurantHome");
 		
 	}
 	
-
-
 }

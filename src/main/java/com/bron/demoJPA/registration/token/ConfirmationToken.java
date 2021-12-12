@@ -32,8 +32,6 @@ public class ConfirmationToken {
 		this.appUser = appUser;
 	}
 		
-		
-		
 		//Define primary key 
 		@Id
 		//Auto generate primary key

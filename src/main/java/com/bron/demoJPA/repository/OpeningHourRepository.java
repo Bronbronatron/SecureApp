@@ -26,7 +26,7 @@ public interface OpeningHourRepository extends JpaRepository<OpeningHour, Long> 
 	   @Query(
 				value = "select * from opening_hour_info o where rest_id= ?1", nativeQuery = true
 				)
-	   OpeningHour getOpeningHourByRestaurantID(Long id);
+	  List<OpeningHour> getOpeningHourByRestaurantID(Long id);
 
 
 }
