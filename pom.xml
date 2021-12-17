@@ -11,6 +11,7 @@
 	</parent>
 	<groupId>com.bron</groupId>
 	<artifactId>demoJPA</artifactId>
+	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>demoJPA</name>
 	<description>Demo project for Spring Boot</description>
@@ -43,7 +44,6 @@
 			<artifactId>spring-boot-starter-mail</artifactId>
 			<version>2.2.0.RELEASE</version>
 		</dependency>
-
 
 
 		<!-- Connect to mySQL database -->
@@ -107,6 +107,11 @@
 			<version>2.6.0</version>
 		</dependency>
 
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-jpamodelgen</artifactId>
+			<version>5.6.2.Final</version>
+		</dependency>
 
 	</dependencies>
 
@@ -124,7 +129,92 @@
 					</excludes>
 				</configuration>
 			</plugin>
-		</plugins>
+
+
+			<plugin>
+				<groupId>org.bsc.maven</groupId>
+				<artifactId>maven-processor-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>process</id>
+						<goals>
+							<goal>process</goal>
+						</goals>
+						<phase>generate-sources</phase>
+						<configuration>
+							<!-- source output directory -->
+							<outputDirectory>target/metamodel</outputDirectory>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+					<compilerArgument>-proc:none</compilerArgument>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<version>1.3</version>
+				<executions>
+					<execution>
+						<id>add-source</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>add-source</goal>
+						</goals>
+						<configuration>
+							<sources>
+								<source>target/metamodel</source>
+							</sources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+<plugin>
+  <groupId>org.codehaus.mojo</groupId>
+  <artifactId>exec-maven-plugin</artifactId>
+  <version>1.6.0</version>
+  <executions>
+    <execution>
+      <goals>
+        <goal>java</goal>
+      </goals>
+    </execution>
+  </executions>
+	<configuration>
+    <arguments>
+      <argument>--output</argument>
+      <argument>target/generated-sources/</argument>
+    </arguments>
+  </configuration>
+</plugin>	
+
+<plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-compiler-plugin</artifactId>
+    <version>3.1</version>
+    <configuration>
+        <source>1.8</source>
+        <target>1.8</target>
+    </configuration>
+
+</plugin>	
+
+	</plugins>
+
+
+
 	</build>
+
+
+
+
 
 </project>
