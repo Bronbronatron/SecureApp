@@ -18,13 +18,15 @@ import com.bron.demoJPA.repository.DishRepository;
 @Service
 public class DishServiceImpl implements DishService {
 
-	// @Autowired
-	// AppUser appUser;
-
 	@Autowired
 	private DishRepository dishRepository;
 
-	@Autowired
+
+	
+
+	public DishServiceImpl(DishRepository dishRepository2) {
+		this.dishRepository =  dishRepository2;
+	}
 
 	@Override
 	public List<Dish> getAllDish() {
@@ -48,14 +50,10 @@ public class DishServiceImpl implements DishService {
 		return dish;
 	}
 
-	@Override
-	public void saveDishById(Dish dish) {
-		this.dishRepository.save(dish);
-	}
 
 	@Override
 	public void saveDishWithUserId(Dish dish) {
-		Object principal = (AppUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+	 	Object principal = (AppUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		AppUser app = dish.getApp();
 		app = (AppUser) principal;
 		dish.setApp(app);
@@ -66,5 +64,11 @@ public class DishServiceImpl implements DishService {
 	public void deleteDishById(long Id) {
 		this.dishRepository.deleteById(Id);
 	}
+
+//	@Override
+//	public void saveDishById(Dish dish) {
+//		this.dishRepository.save(dish);
+		
+	//}
 
 }

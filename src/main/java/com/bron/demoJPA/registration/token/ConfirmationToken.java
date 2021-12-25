@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 
+import org.hibernate.annotations.Cascade;
+
 import com.bron.demoJPA.appuser.AppUser;
 
 import lombok.Getter;
@@ -56,10 +58,10 @@ public class ConfirmationToken {
 		
 		//Tie to User
 		//An application user can have many confirmation tokens
-		@ManyToOne(cascade = CascadeType.ALL)
+
+		@ManyToOne(cascade = CascadeType.REMOVE)
 		@JoinColumn(
-		nullable = false,
-		//column name
+		nullable = true,
 		name = "rest_id"
 		)
 		private AppUser appUser;

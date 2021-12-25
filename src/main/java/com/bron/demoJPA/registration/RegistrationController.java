@@ -20,13 +20,13 @@ public class RegistrationController {
 	public String ShowRegisterationForm(Model model) {
 		RegistrationRequest request = new RegistrationRequest();
 		model.addAttribute("request", request);
-		return "registration";
+		return "Registration_registration";
 	}
 
 	@PostMapping("/api/v1/registration")
 	public String registration(@ModelAttribute("request") RegistrationRequest request) {
 		registrationService.register(request);
-		return "redirect:/dish";
+		return "redirect:/home";
 	}
 
 	@GetMapping(path = "/api/v1/registration/confirm")

@@ -20,5 +20,6 @@ public interface UserRespository extends JpaRepository<AppUser, Long> {
 				nativeQuery = true
 				)
 		  int enableAppUser(String email);
+		AppUser findByRestaurantName(String string);
 	}
 

@@ -1,7 +1,5 @@
 package com.bron.demoJPA.conroller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -27,35 +25,35 @@ public class OpeningHourController {
 	@Autowired
 	private OpeningHourRepository openingHourRepository;
 	
-	@GetMapping("/openinghour")
+	@GetMapping("/user/openinghour/add")
 	public String showOpeningHourForm (Model model) {
 		OpeningHour openinghour = new OpeningHour();
 		model.addAttribute("openinghour", openinghour);
-		return "opening_hours";
+		return "user_openinghours_save";
 	}
 	
 	
-	@PostMapping("/saveOpeningHour")
+	@PostMapping("/user/openinghour/save")
 	public String saveOpeningHour(@ModelAttribute("openinghour")OpeningHour openinghour) {
 			openingHourService.saveOpeningHourWithUserId(openinghour);	
-			return "redirect:/dish";
+			return "redirect:/user/openinghours/view";
 			}
 	
-	@GetMapping("/showOpeningForUpdate/{openingHourID}")
-	public String showOpeningForUpdate(@PathVariable(value = "openingHourID") long openingHourID, Model model) {
-		OpeningHour openingHour  = openingHourService.getOpeningHourByOpeningHourID(openingHourID);
-		model.addAttribute("openinghour", openingHour);
-		return "opening_hours_update";
-		
-	}
+			@GetMapping("/showOpeningForUpdate/{openingHourID}")
+			public String showOpeningForUpdate(@PathVariable(value = "openingHourID") long openingHourID, Model model) {
+				OpeningHour openingHour = openingHourService.getOpeningHourByOpeningHourID(openingHourID);
+				model.addAttribute("openinghour", openingHour);
+				return "user_openinghours_update";
+
+			}
 
 	
-	@GetMapping("/open")
+	@GetMapping("/user/openinghours/view")
 	public String viewOpeningPage(Model model){
 		AppUser user = (AppUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		Long id = user.getId();
 		model.addAttribute("listopeninghours", openingHourRepository.getOpeningHourByRestaurantID(id));
-		return "openingIndex";
+		return "user_openinghour_index";
 		
 
 	

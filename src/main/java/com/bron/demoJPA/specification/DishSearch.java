@@ -23,15 +23,5 @@ public class DishSearch {
 	private boolean glutenFree;
 	private boolean eggFree;
 	private AppUser app;
-	
-	public boolean getVegan() {
-		return vegan;
-	}
-	public boolean getEggFree() {
-		return eggFree;
-	}
-	public boolean getGlutenFree() {
-		return glutenFree;
-	}
 
 }

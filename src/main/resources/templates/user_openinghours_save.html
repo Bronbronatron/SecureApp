@@ -29,8 +29,7 @@
     <br>
     <br>
 
-	<form action="#" th:action="@{/saveOpeningHour}" th:object="${openinghour}"
-		method="POST">
+	<form action="#" th:action="@{/user/openinghour/save}" th:object="${openinghour}"  method="POST">
 		<div class="col-sm-10 offset-sm-1 text-center">
 		<div class="container">
 			<br>
@@ -103,9 +102,10 @@
 
 
 
-		<button type="submit" class="btn btn-info col-4">Save</button>
+		<button type="submit" name ="myButton" class="btn btn-info col-4" >Save</button>
 		<br>
-		<a th:href="@{/userDetails}"> Back to User Details</a>
+		
+		<a th:href="@{/user/openinghours/view}"> Back to Opening Hours</a>
 	</div>	
 	</form>
 	

@@ -22,6 +22,8 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.bron.demoJPA.registration.token.ConfirmationToken;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -35,6 +37,8 @@ import lombok.ToString;
 @NoArgsConstructor
 @EqualsAndHashCode
 @Entity
+@AllArgsConstructor
+@Builder
 @ToString(exclude = "opening")
 @Table(name = "Rest_info")
 
@@ -108,12 +112,13 @@ public class AppUser implements UserDetails {
 	public boolean isEnabled() {
 		return enabled;
 	}
-	
-	//need reference to restaurant info but one to one relationship 
-	//already defined by openingHour object in opening hour table
-	
+
+	// need reference to restaurant info but one to one relationship
+	// already defined by openingHour object in opening hour table
+
 	@OneToOne(
-			mappedBy = "appUser"
-			)
+			 cascade = CascadeType.REMOVE, fetch = FetchType.LAZY, optional = true,
+			mappedBy = "appUser")
+
 	private OpeningHour opening;
 }

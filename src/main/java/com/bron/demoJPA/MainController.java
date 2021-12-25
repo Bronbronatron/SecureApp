@@ -13,11 +13,18 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class MainController {
 
-	@GetMapping("/home")
+	@GetMapping("/homepage")
 	public String showRestaurantHomePage() {
-		return "restaurantHome";
+		return "Main_home";
 
 	}
+	
+	@GetMapping("/user/home")
+	public String showMainHomePage() {
+		return "user_home_page";
+
+	}
+	
 	
 	@GetMapping("/userDetails")
 	public String showUserDetailsHome() {
@@ -25,10 +32,12 @@ public class MainController {
 
 	}
 	
-	@GetMapping("/admin")
+	@GetMapping("/admin/home")
 	public String admin() {
-			return("restaurantHome");
+			return "Admin_home";
 		
 	}
+	
+
 	
 }

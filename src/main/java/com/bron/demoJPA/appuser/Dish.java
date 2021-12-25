@@ -15,6 +15,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 
+import org.hibernate.annotations.OnDelete;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -55,7 +57,7 @@ public class Dish {
 	private boolean eggFree;
 
 	
-	@ManyToOne()//cascade = CascadeType.ALL)
+	@ManyToOne()
 	@JoinColumn(name = "Rest_ID", referencedColumnName = "Rest_ID")
 	private AppUser app;
 

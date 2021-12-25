@@ -1,6 +1,5 @@
 package com.bron.demoJPA.appuser;
 
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
@@ -25,69 +24,62 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Table(name = "Opening_hour_info"
-		)
+@Table(name = "Opening_hour_info")
 
 public class OpeningHour {
 	@Id
-	@SequenceGenerator(
-			name = "opening_hour_sequence", sequenceName = "opening_hour_sequence", allocationSize = 1)
-	
-	@GeneratedValue(
-			strategy = GenerationType.SEQUENCE, generator = "opening_hour_sequence")
-	@Column(name ="OpeningHour_ID")
-	private Long openingHourID;	
-	
-	
-	@Column(name ="Rest_Opening_Hour_Monday")
+	@SequenceGenerator(name = "opening_hour_sequence", sequenceName = "opening_hour_sequence", allocationSize = 1)
+
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "opening_hour_sequence")
+	@Column(name = "OpeningHour_ID")
+	private Long openingHourID;
+
+	@Column(name = "Rest_Opening_Hour_Monday")
 	private String openingHourMon;
-	
-	@Column(name ="Rest_Closing_Hour_Monday")
+
+	@Column(name = "Rest_Closing_Hour_Monday")
 	private String closingHourMon;
-	
-	@Column(name ="Rest_Opening_Hour_Tuesday")
+
+	@Column(name = "Rest_Opening_Hour_Tuesday")
 	private String openingHourTue;
-	
-	@Column(name ="Rest_Closing_Hour_Tuesday")
+
+	@Column(name = "Rest_Closing_Hour_Tuesday")
 	private String closingHourTue;
-	
-	@Column(name ="Rest_Opening_Hour_Wednesday")
+
+	@Column(name = "Rest_Opening_Hour_Wednesday")
 	private String openingHourWed;
-	
-	@Column(name ="Rest_Closing_Hour_Wednesday")
+
+	@Column(name = "Rest_Closing_Hour_Wednesday")
 	private String closingHourWed;
-	
-	@Column(name ="Rest_Opening_Hour_Thursday")
+
+	@Column(name = "Rest_Opening_Hour_Thursday")
 	private String openingHourThurs;
-	
-	@Column(name ="Rest_Closing_Hour_Thursday")
+
+	@Column(name = "Rest_Closing_Hour_Thursday")
 	private String closingHourThurs;
 
-	@Column(name ="Rest_Opening_Hour_Friday")
+	@Column(name = "Rest_Opening_Hour_Friday")
 	private String openingHourFri;
-	
-	@Column(name ="Rest_Closing_Hour_Friday")
-	private String closingHourFri;
-	
-	@Column(name ="Rest_Opening_Hour_Saturday")
-	private String openingHourSat;
-	
-	@Column(name ="Rest_Closing_Hour_Saturday")
-	private String closingHourSat;
-	
-	@Column(name ="Rest_Opening_Hour_Sunday")
-	private String openingHourSun;
-	
-	@Column(name ="Rest_Closing_Hour_Sunday")
-	private String closingHourSun;
-	
 
-	@OneToOne(fetch = FetchType.LAZY, optional = true)
-	//cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = true)
-	
+	@Column(name = "Rest_Closing_Hour_Friday")
+	private String closingHourFri;
+
+	@Column(name = "Rest_Opening_Hour_Saturday")
+	private String openingHourSat;
+
+	@Column(name = "Rest_Closing_Hour_Saturday")
+	private String closingHourSat;
+
+	@Column(name = "Rest_Opening_Hour_Sunday")
+	private String openingHourSun;
+
+	@Column(name = "Rest_Closing_Hour_Sunday")
+	private String closingHourSun;
+
+	@OneToOne(// fetch = FetchType.LAZY, optional = true)
+			cascade = CascadeType.REMOVE, fetch = FetchType.LAZY, optional = true)
+
 	@JoinColumn(name = "Rest_ID", referencedColumnName = "Rest_ID")
-	private AppUser appUser; 
-			
-			
-	
+	private AppUser appUser;
+
 }

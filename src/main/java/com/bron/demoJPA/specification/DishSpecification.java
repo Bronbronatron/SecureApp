@@ -28,33 +28,33 @@ public class DishSpecification implements Specification<Dish>  {
 	@Override
 	public Predicate toPredicate(Root<Dish> root, CriteriaQuery<?> query,
 			CriteriaBuilder cb) {
-   	 Join<Dish, AppUser> o = root.join(Dish_.app);
+  // 	 Join<Dish, AppUser> o = root.join(Dish_.app);
   
         Path<String> dname = root.get(Dish_.dname);
         Path<Boolean> vegan= root.get(Dish_.vegan);
         Path<Boolean> eggFree= root.get(Dish_.eggFree);
         Path<Boolean> glutenFree= root.get(Dish_.glutenFree);
-        Path<String> rname = root.get(((AppUser) Dish_.app).getRestaurantName());
+       // Path<String> rname = root.get(((AppUser) Dish_.app).getRestaurantName());
         final List<Predicate> predicates = new ArrayList<Predicate>();
         
         if(criteria.getDname()!=null) {
             predicates.add(cb.equal(dname, criteria.getDname()));
         }
         
-        if(criteria.getApp().getRestaurantName()!=null) {
-            predicates.add(cb.equal(rname, criteria.getApp().getRestaurantName()));
-        }
+     //   if(criteria.getApp().getRestaurantName()!=null) {
+    //        predicates.add(cb.equal(rname, criteria.getApp().getRestaurantName()));
+     //   }
  
-        if(criteria.getVegan()!=false) {
-            predicates.add(cb.equal(vegan, criteria.getVegan()));
+        if(criteria.isVegan()!=false) {
+            predicates.add(cb.equal(vegan, criteria.isVegan()));
         }
         
-        if(criteria.getEggFree()!=false) {
-            predicates.add(cb.equal(eggFree, criteria.getEggFree()));
+        if(criteria.isEggFree()!=false) {
+            predicates.add(cb.equal(eggFree, criteria.isEggFree()));
         }
         
-        if(criteria.getGlutenFree()!=false) {
-            predicates.add(cb.equal(glutenFree, criteria.getGlutenFree()));
+        if(criteria.isGlutenFree()!=false) {
+            predicates.add(cb.equal(glutenFree, criteria.isGlutenFree()));
         }
 	
         return cb.and(predicates.toArray(new Predicate[predicates.size()]));

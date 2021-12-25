@@ -22,6 +22,14 @@ public interface ConfirmationTokenRepository extends JpaRepository<ConfirmationT
 				)
     int updateConfirmedAt(LocalDateTime confirmedAt,
             String token);
+    
+	  @Transactional
+	  @Modifying
+	  @Query(
+				value = "delete from confirmation_token t where rest_id= ?1", nativeQuery = true
+				)
+	  void deleteTokenByRestaurantID(Long id);
+	  
 		    
     
 }

@@ -18,7 +18,7 @@
 		</div>
 			
 	
-		<form action="#" th:action="@{/saveDish}" th:object="${dish}" method="POST">
+		<form action="#" th:action="@{/admin/saveDish}" th:object="${dish}" method="POST">
 		
 		<div class="col-sm-10 offset-sm-1 text-center">
 		<input type = "hidden" th:field = "*{dishId}"/>
@@ -44,16 +44,7 @@
    </div>
    <br>
    <br>
-   
-      <label class=" form-check-label" for="inlineCheckbox1 ">Vegan?</label>
-   <input type="checkbox" th:field="*{vegan}" />
   
-   <label class="form-check-label" for="inlineCheckbox1">Gluten Free?</label>
-   <input type="checkbox" th:field="*{glutenFree}" />
-   
-   <label class="form-check-label" for="inlineCheckbox1">Egg Free?</label>
-   <input type="checkbox" th:field="*{EggFree}" />
-   
    
 				<br>
 				<br>
@@ -63,7 +54,7 @@
 		</div>
 		<hr>
 		<div class="col-sm-10 offset-sm-1 text-center">
-		<a th:href = "@{/dish}"> Back to Dish List</a>
+		<a th:href = "@{/admin/dish/view}"> Back to Dish List</a>
 	</div>
 </body>
 </html>
