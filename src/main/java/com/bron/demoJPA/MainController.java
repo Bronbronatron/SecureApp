@@ -19,6 +19,11 @@ public class MainController {
 
 	}
 	
+	@GetMapping("/homepage/logoutsuccess")
+	public String ShowLogout() {
+		return "Main_Logout_successful";
+	}
+	
 	@GetMapping("/user/home")
 	public String showMainHomePage() {
 		return "user_home_page";
