@@ -32,13 +32,15 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+
+
+@AllArgsConstructor
+@Builder
 @Getter
 @Setter
 @NoArgsConstructor
 @EqualsAndHashCode
 @Entity
-@AllArgsConstructor
-@Builder
 @ToString(exclude = "opening")
 @Table(name = "Rest_info")
 
@@ -53,9 +55,6 @@ public class AppUser implements UserDetails {
 	@Column(name = "Rest_Name")
 	private String restaurantName;
 
-	@Embedded
-	private Address address;
-
 	@Column(name = "Rest_Phone_Number")
 	private String phoneNumber;
 
@@ -65,18 +64,38 @@ public class AppUser implements UserDetails {
 	@Column(name = "Rest_Email_Address")
 	private String email;
 
+	@Column(name = "Rest_Address_One")
+	private String addressOne;
+
+	@Column(name = "Rest_Address_Two")
+	private String addressTwo;
+	
+	@Column(name = "Rest_Address_City")
+	private String city;
+	
+	@Column(name = "Rest_Postcode")
+	private String postcode;
+	
+	
 	@Enumerated(EnumType.STRING)
 	private AppUserRole appUserRole;
 	private Boolean locked = false;
 	// don't enable user until email verification
 	private Boolean enabled = false;
 
-	public AppUser(String restname, String email, String pass, AppUserRole app) {
-		this.restaurantName = restname;
-		this.email = email;
-		this.password = pass;
-		this.appUserRole = app;
-	}
+	public AppUser(String restname, String email, String pass, AppUserRole app, String phonenumber,
+			String addressOne, String addressTwo, String city, String postcode) {
+			this.restaurantName = restname;
+			this.email = email;
+			this.password = pass;
+			this.appUserRole = app;
+			this.phoneNumber = phonenumber;
+			this.addressOne = addressOne;
+			this.addressTwo = addressTwo;
+			this.city= city;
+			this.postcode = postcode;
+		}
+
 
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		SimpleGrantedAuthority authority = new SimpleGrantedAuthority(appUserRole.name());

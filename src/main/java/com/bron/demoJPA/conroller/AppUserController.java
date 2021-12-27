@@ -4,10 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-
+import org.springframework.web.bind.annotation.PostMapping;
 
 import com.bron.demoJPA.appuser.AppUser;
+import com.bron.demoJPA.appuser.Dish;
 import com.bron.demoJPA.registration.RegistrationRequest;
 import com.bron.demoJPA.registration.token.ConfirmationTokenRepository;
 import com.bron.demoJPA.repository.AppUserRepository;
@@ -38,8 +40,16 @@ public class AppUserController {
 	   AppUser appUser =  userService.getAppUserById(id);
 		// set dish as model to pre-populate the form data
 		model.addAttribute("appUser", appUser);
-		return "registration";
+		return "Admin_User_Update";
 	}
+	
+
+	@PostMapping("/admin/saveDetails")
+	public String adminSaveDish(@ModelAttribute("appUser")AppUser appUser) {
+			userRepo.save(appUser);
+			return "redirect:/admin/appuser/view";
+			}
+	
 	
 	@GetMapping("/deleteAppUser/{id}")
 	public String deleteDish(@PathVariable(value = "id") long id, Model model) {

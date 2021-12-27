@@ -38,16 +38,23 @@
     	<br>
   
 
-
 <body>
 <div class="col-sm-10 offset-sm-1 text-center">
-<h1>Welcome Admin!</h1>
 
-
-<a href="/admin/dish/view"> Manage dishes</a>
+<h1>Welcome <span th:text= "${appUser.restaurantName}">Welcome Admin!</span></h1>
+		<br>
+		<br>
+<a th:href="@{/admin/dish/view}"
+		class="btn btn-info col-6"> Manage <br> Dishes!</a>
 	<br>
     <br>
-<a href="/admin/appuser/view"> Manage Users</a>
+	<br>
+    <br>
+    <br>
+    <a th:href="@{/admin/appuser/view}"
+		class="btn btn-info col-6">  Manage <br> Users!</a>
+    
+
 
 </div>
 </body>

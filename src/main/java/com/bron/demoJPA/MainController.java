@@ -2,10 +2,12 @@
 package com.bron.demoJPA;
 
 
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-
+import com.bron.demoJPA.appuser.AppUser;
 
 import lombok.NoArgsConstructor;
 
@@ -25,7 +27,9 @@ public class MainController {
 	}
 	
 	@GetMapping("/user/home")
-	public String showMainHomePage() {
+	public String showMainHomePage(Model model) {
+		AppUser appUser = (AppUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		model.addAttribute("appUser", appUser);
 		return "user_home_page";
 
 	}
@@ -38,7 +42,9 @@ public class MainController {
 	}
 	
 	@GetMapping("/admin/home")
-	public String admin() {
+	public String admin(Model model) {
+		AppUser appUser = (AppUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		model.addAttribute("appUser", appUser);
 			return "Admin_home";
 		
 	}

@@ -34,7 +34,8 @@ public class RegistrationService {
 		}
 
 		String token = appUserService.signUpUser(
-				new AppUser(request.getRestaurantName(), request.getEmail(), request.getPassword(), AppUserRole.USER));
+				new AppUser(request.getRestaurantName(), request.getEmail(), request.getPassword(), AppUserRole.USER,  request.getPhoneNumber(),
+						request.getAddressOne(), request.getAddressTwo(), request.getCity(), request.getPostcode()));
 
 		String link = "http://localhost:8080/api/v1/registration/confirm?token=" + token;
 

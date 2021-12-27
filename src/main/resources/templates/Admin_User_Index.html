@@ -55,15 +55,20 @@
 				<td th:text="${appUser.email}"></td>
 				<td th:text="${appUser.password}"></td>
 				
+				<td><a th:href="@{/showAppUserForUpdate/{id}(id=${appUser.id})}"
+				class="btn btn-primary">Update</a>
+				
 				<td><a th:href="@{/deleteAppUser/{id}(id=${appUser.id})}"
 					class="btn btn-danger">Delete</a>
 			</tr>			
 		</tbody>
 		
 	</table>
+	<br>
+	<br>
 	<div class="col-sm-10 offset-sm-1 text-center">
 	 <a th:href="@{/admin/home}"
-		class="btn btn-primary btn-sm mb-3"> Home </a>
+		class="btn btn-info col-6"> Back </a>
 		</div>
 </body>
 

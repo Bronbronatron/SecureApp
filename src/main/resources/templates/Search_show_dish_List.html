@@ -54,21 +54,25 @@
 		<tbody>
 			<tr th:each="dishsearch: ${listdishsearch}">
 				<td th:text="${dishsearch.dname}"></td>
-				<td th:text="${dishsearch.app.id}"></td>
 				<td th:text="${dishsearch.description}"></td>
 				<td th:text="${dishsearch.price}"></td>
-			</tr>			
+				<td th:text="${dishsearch.app.restaurantName}"></td>
+			</tr>	
 		
 	</table>
+		<br>
+		<br>
+		<br>
+			
 	<div class="col-sm-10 offset-sm-1 text-center">
 	 <a th:href="@{/homepage/showsearchform}"
-		class="btn btn-primary btn-sm mb-3"> Search Again</a>
+		class="btn btn-info col-6"> Search Again</a>
 		
 		<br>
 		<br>
 	
 	   <a th:href="@{/homepage}"
-		class="btn btn-primary btn-sm mb-3"> Home </a>
+		class="btn btn-info col-6"> Back </a>
 		</div>
 </body>
 

@@ -8,8 +8,6 @@ import java.util.Collections;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
-import com.bron.demoJPA.appuser.Address;
-
 import com.bron.demoJPA.appuser.AppUserRole;
 import com.bron.demoJPA.appuser.OpeningHour;
 import lombok.AllArgsConstructor;
@@ -25,15 +23,22 @@ public class AppUserSearch {
 	
 	
 	private long id;
+	
 	private String restaurantName;
-
-	private Address address;
 
 	private String phoneNumber;
 
 	private String password;
 
 	private String email;
+	
+	private String addressOne;
+	
+	private String addressTwo;
+	
+	private String city;
+	
+	private String postcode;
 
 
 	private AppUserRole appUserRole;
