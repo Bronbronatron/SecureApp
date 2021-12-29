@@ -13,6 +13,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.bron.demoJPA.appuser.AppUser;
 import com.bron.demoJPA.appuser.Dish;
 import com.bron.demoJPA.appuser.OpeningHour;
 
@@ -27,6 +28,8 @@ public interface OpeningHourRepository extends JpaRepository<OpeningHour, Long> 
 				value = "select * from opening_hour_info o where rest_id= ?1", nativeQuery = true
 				)
 	  List<OpeningHour> getOpeningHourByRestaurantID(Long id);
-
-
+	   
+	   
+	  
 }
+

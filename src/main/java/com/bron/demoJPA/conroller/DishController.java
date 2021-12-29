@@ -97,5 +97,10 @@ public class DishController {
 		return "redirect:/admin/dish/view";
 		
 	}
+	
+
+
+	
+	
 
 }

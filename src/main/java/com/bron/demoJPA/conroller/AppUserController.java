@@ -33,6 +33,8 @@ public class AppUserController {
 		model.addAttribute("listAppUser", userRepo.findAll());
 		return "Admin_User_Index";
 	}
+	
+
 
 	@GetMapping("/showAppUserForUpdate/{id}")
 	public String showFormForUpdate(@PathVariable(value = "id") long id, Model model) {
@@ -42,6 +44,16 @@ public class AppUserController {
 		model.addAttribute("appUser", appUser);
 		return "Admin_User_Update";
 	}
+	
+	@GetMapping("/homepage/showAppUser/{id}")
+	public String showForm(@PathVariable(value = "id") long id, Model model) {
+		// get dish from service
+	   AppUser appUser =  userService.getAppUserById(id);
+		// set dish as model to pre-populate the form data
+		model.addAttribute("appUser", appUser);
+		return "Main_Rest_Details";
+	}
+	
 	
 
 	@PostMapping("/admin/saveDetails")
@@ -59,7 +71,8 @@ public class AppUserController {
 		return "redirect:/admin/appuser/view";
 		
 	}
-
+	
+	
 }
 	
 

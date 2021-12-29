@@ -57,6 +57,15 @@
 				<td th:text="${dishsearch.description}"></td>
 				<td th:text="${dishsearch.price}"></td>
 				<td th:text="${dishsearch.app.restaurantName}"></td>
+				
+				
+				<td><a th:href="@{/homepage/showAppUser/{id}(id=${dishsearch.app.id})}"
+				class="btn btn-primary">Restaurant Details</a></td>
+				
+				<td><a th:href="@{/homepage/showOpening/{id}(id=${dishsearch.app.opening.openingHourID})}"
+				class="btn btn-primary">Opening hours</a></td>
+				
+			
 			</tr>	
 		
 	</table>

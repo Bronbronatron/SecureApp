@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.bron.demoJPA.appuser.AppUser;
 import com.bron.demoJPA.appuser.Dish;
 import com.bron.demoJPA.appuser.OpeningHour;
+import com.bron.demoJPA.repository.AppUserRepository;
 import com.bron.demoJPA.repository.OpeningHourRepository;
 import com.bron.demoJPA.service.OpeningHourService;
 
@@ -24,6 +25,9 @@ public class OpeningHourController {
 	
 	@Autowired
 	private OpeningHourRepository openingHourRepository;
+	
+	@Autowired
+	private AppUserRepository app;
 	
 	@GetMapping("/user/openinghour/add")
 	public String showOpeningHourForm (Model model) {
@@ -54,11 +58,19 @@ public class OpeningHourController {
 		Long id = user.getId();
 		model.addAttribute("listopeninghours", openingHourRepository.getOpeningHourByRestaurantID(id));
 		return "user_openinghour_index";
-		
-
 	
-		
+	}
+	
+	
+	@GetMapping("/homepage/showOpening/{openingHourID}")
+	public String showOpening(@PathVariable(value = "openingHourID") long openingHourID, Model model) {
+		OpeningHour openingHour = openingHourService.getOpeningHourByOpeningHourID(openingHourID);
+		model.addAttribute("openinghour", openingHour);
+		return "Main_Rest_OpeningHours";
+
 	}
 		
 
-}
+	}
+		
+

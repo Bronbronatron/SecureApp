@@ -18,7 +18,6 @@ public interface DishService {
 
 	public void deleteDishById(long Id);
 	
-
 	
 	
 }

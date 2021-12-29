@@ -49,5 +49,7 @@ public class OpeningHourServiceImpl implements OpeningHourService {
 		return  openingHourRepository.findAll();
 	}
 
+	
+
 
 }

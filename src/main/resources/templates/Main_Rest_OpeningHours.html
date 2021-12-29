@@ -28,8 +28,7 @@
     <br>
     <br>
 
-	<form action="#" th:action="@{/saveOpeningHour}" th:object="${openinghour}"
-		method="POST">
+	<form th:object="${openinghour}">
 		<div class="col-sm-10 offset-sm-1 text-center">
 		<div class="container">
 			<br>
@@ -46,25 +45,25 @@
 					
 					<input type = "hidden" th:field = "*{openingHourID}"/>
 					
-					<input type="text" th:field="*{openingHourMon}"
+					<label>Monday</label><input type="text" th:field="*{openingHourMon}"
 						class="form-control mb-4 col-10">
 
-					<input type="text" th:field="*{openingHourTue}"
+					<label>Tuesday</label><input type="text" th:field="*{openingHourTue}"
 						class="form-control mb-4 col-10">
 
-					<input type="text" th:field="*{openingHourWed}"
+					<label>Wednesday</label><input type="text" th:field="*{openingHourWed}"
 						class="form-control mb-4 col-10">
 
-					<input type="text" th:field="*{openingHourThurs}"
+					<label>Thursday</label><input type="text" th:field="*{openingHourThurs}"
 						 class="form-control mb-4 col-10">
 
-					<input type="text" th:field="*{openingHourFri}"
+					<label>Fridays</label><input type="text" th:field="*{openingHourFri}"
 					class="form-control mb-4 col-10">
 
-					<input type="text" th:field="*{openingHourSat}"
+					<label>Saturday</label><input type="text" th:field="*{openingHourSat}"
 						class="form-control mb-4 col-10">
 
-					<input type="text" th:field="*{openingHourSun}"
+					<label>Sunday</label><input type="text" th:field="*{openingHourSun}"
 					 class="form-control mb-4 col-10">
 
 
@@ -75,25 +74,25 @@
 					<hr>
 				
 					
-					 <input type="text" th:field="*{closingHourMon}"
+					<label>Monday</label> <input type="text" th:field="*{closingHourMon}"
 						class="form-control mb-4 col-10">
 
-					<input type="text" th:field="*{closingHourTue}"
+					<label>Tuesday</label><input type="text" th:field="*{closingHourTue}"
 						 class="form-control mb-4 col-10">
 
-					<input type="text" th:field="*{closingHourWed}"
+					<label>Wednesday</label><input type="text" th:field="*{closingHourWed}"
 						 class="form-control mb-4 col-10">
 
-					<input type="text" th:field="*{closingHourThurs}"
+					<label>Thursday</label><input type="text" th:field="*{closingHourThurs}"
 						 class="form-control mb-4 col-10">
 
-					<input type="text" th:field="*{closingHourFri}"
+					<label>Friday</label><input type="text" th:field="*{closingHourFri}"
 					class="form-control mb-4 col-10">
 
-					<input type="text" th:field="*{closingHourSat}"
+					<label>Saturday</label><input type="text" th:field="*{closingHourSat}"
 					 class="form-control mb-4 col-10">
 
-					<input type="text" th:field="*{closingHourSun}"
+					<label>Sunday</label><input type="text" th:field="*{closingHourSun}"
 						class="form-control mb-4 col-10">
 
 
@@ -102,9 +101,11 @@
 		</div>
 
 
-		<button type="submit" class="btn btn-info col-4">Save</button>
+		
 		<br>
-		<a th:href="@{/user/openinghours/view}"> Back to Opening Hours</a>
+		<div class="col-sm-10 offset-sm-1 text-center">
+						 <a th:href="@{/homepage}"
+							class="btn btn-info col-6"> Home</a></div>
 	</div>	
 	</form>
 	

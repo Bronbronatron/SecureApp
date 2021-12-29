@@ -44,10 +44,7 @@ public class DishSpecification implements Specification<Dish>  {
         if(criteria.getDname()!=null) {
             predicates.add(cb.equal(dname, criteria.getDname()));
         }
-        
  
-        
-        
         if(criteria.getApp().getCity() != null) {
             predicates.add(cb.equal(city, criteria.getApp().getCity()));
         }

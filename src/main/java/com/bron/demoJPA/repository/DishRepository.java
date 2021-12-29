@@ -28,9 +28,13 @@ public interface DishRepository extends JpaRepository<Dish, Long>, JpaSpecificat
 				)
 	  void deleteDishByRestaurantID(Long id);
 	  
-  
-
-  
+	  
+	  
 }
+
+
+
+
+
 
 
