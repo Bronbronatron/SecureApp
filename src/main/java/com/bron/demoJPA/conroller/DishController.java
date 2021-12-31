@@ -26,14 +26,18 @@ public class DishController {
 	@Autowired
 	private DishRepository dishRepo;
 
-
-	@GetMapping("/user/dish/view")
-	public String viewNewHomePage(Model model) {
-		AppUser user = (AppUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		Long id = user.getId();
-		model.addAttribute("listDish", dishRepo.getDishByRestaurantID(id));
-		return "user_dish_index";
-	}
+	
+	
+	@PostMapping("/user/saveDish")
+	public String saveUser(@ModelAttribute("dish")Dish dish) {
+			dishService.saveDishWithUserId(dish);	
+			return "redirect:/user/dish/view";
+			}
+	
+	
+	
+	
+	
 	
 	@GetMapping("/user/dish/add")
 	public String showNewDishForm(Model model) {
@@ -43,6 +47,36 @@ public class DishController {
 		return "user_dish_save";
 	}
 	
+	
+
+
+	
+	
+	
+	
+	@PostMapping("/admin/saveDish")
+	public String adminSaveDish(@ModelAttribute("dish")Dish dish) {
+			dishService.saveDishWithUserId(dish);	
+			return "redirect:/admin/dish/view";
+			}
+	
+	
+	
+	
+	
+	
+
+	@GetMapping("/user/dish/view")
+	public String viewHomePage(Model model) {
+		AppUser user = (AppUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		Long id = user.getId();
+		model.addAttribute("listDish", dishRepo.getDishByRestaurantID(id));
+		return "user_dish_index";
+	}
+	
+	
+	
+
 	@GetMapping("/admin/dish/view")
 	public String viewAllDish(Model model) {
 		model.addAttribute("listDish", dishRepo.findAll());
@@ -50,19 +84,7 @@ public class DishController {
 	}
 	
 
-	@PostMapping("/user/saveDish")
-	public String saveUser(@ModelAttribute("dish")Dish dish) {
-			dishService.saveDishWithUserId(dish);	
-			return "redirect:/user/dish/view";
-			}
-	
 
-	@PostMapping("/admin/saveDish")
-	public String adminSaveDish(@ModelAttribute("dish")Dish dish) {
-			dishService.saveDishWithUserId(dish);	
-			return "redirect:/admin/dish/view";
-			}
-	
 	
 
 	@GetMapping("/showFormForUpdate/{dishId}")
@@ -84,12 +106,15 @@ public class DishController {
 		return "Admin_dish_save";
 	}
 	
+	
 	@GetMapping("/deleteDish/{dishId}")
 	public String deleteDish(@PathVariable(value = "dishId") long dishId, Model model) {
 		this.dishService.deleteDishById(dishId);
 		return "redirect:/user/dish/view";
 		
 	}
+	
+	
 	
 	@GetMapping("/admin/deleteDish/{dishId}")
 	public String adminDeleteDish(@PathVariable(value = "dishId") long dishId, Model model) {

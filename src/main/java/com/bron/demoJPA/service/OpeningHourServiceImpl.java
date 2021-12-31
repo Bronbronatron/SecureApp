@@ -30,8 +30,9 @@ public class OpeningHourServiceImpl implements OpeningHourService {
 	@Override
 	public void saveOpeningHour(OpeningHour open) {
 		 openingHourRepository.save(open);
-		
 	}
+	
+	
 	@Override
 	public OpeningHour getOpeningHourByOpeningHourID(long openingHourID) {
 		Optional<OpeningHour> optional = openingHourRepository.findById(openingHourID);
@@ -48,8 +49,5 @@ public class OpeningHourServiceImpl implements OpeningHourService {
 	public List<OpeningHour> getAllOpeningHour() {
 		return  openingHourRepository.findAll();
 	}
-
-	
-
 
 }

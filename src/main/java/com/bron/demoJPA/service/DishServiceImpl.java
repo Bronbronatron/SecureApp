@@ -21,9 +21,6 @@ public class DishServiceImpl implements DishService {
 	@Autowired
 	private DishRepository dishRepository;
 
-
-	
-
 	public DishServiceImpl(DishRepository dishRepository2) {
 		this.dishRepository =  dishRepository2;
 	}
@@ -31,11 +28,6 @@ public class DishServiceImpl implements DishService {
 	@Override
 	public List<Dish> getAllDish() {
 		return dishRepository.findAll();
-	}
-
-	@Override
-	public void saveDish(Dish dish) {
-		this.dishRepository.save(dish);
 	}
 
 	@Override
@@ -63,6 +55,12 @@ public class DishServiceImpl implements DishService {
 	@Override
 	public void deleteDishById(long Id) {
 		this.dishRepository.deleteById(Id);
+	}
+
+	
+	@Override
+	public void saveDish(Dish dish) {
+		this.dishRepository.save(dish);
 	}
 
 //	@Override

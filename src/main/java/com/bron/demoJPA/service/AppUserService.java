@@ -18,3 +18,4 @@ public interface AppUserService {
 	public void deleteAppUserById(long id);
 
 }
+

@@ -16,8 +16,8 @@ import com.bron.demoJPA.appuser.AppUser;
 public interface AppUserRepository extends JpaRepository<AppUser, Long>{
 	
 	  @Transactional
-	    @Modifying
-		@Query(
+	  @Modifying
+	  @Query(
 				value = "select * from rest_info r where rest_id= ?1", nativeQuery = true
 				)
 	List<AppUser> getAppUserById(Long id);
@@ -25,3 +25,8 @@ public interface AppUserRepository extends JpaRepository<AppUser, Long>{
 	  
 	  
 }
+
+
+
+
+

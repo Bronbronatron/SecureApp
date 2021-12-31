@@ -69,8 +69,7 @@ public class OpeningHourController {
 		return "Main_Rest_OpeningHours";
 
 	}
+}
 		
 
-	}
-		
-
+	

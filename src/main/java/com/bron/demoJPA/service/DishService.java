@@ -11,8 +11,6 @@ public interface DishService {
 	void saveDish(Dish dish);
 
 	Dish getDishByDishId(long dishId);
-
-	//void saveDishById(Dish dish);
 	
 	public void saveDishWithUserId(Dish dish);
 

@@ -33,3 +33,5 @@ public interface ConfirmationTokenRepository extends JpaRepository<ConfirmationT
 		    
     
 }
+
+

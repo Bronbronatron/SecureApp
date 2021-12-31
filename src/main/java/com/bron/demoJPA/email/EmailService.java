@@ -18,16 +18,11 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class EmailService implements EmailSender {
 	
-	
-
     private final static Logger LOGGER = LoggerFactory
             .getLogger(EmailService.class);
 
     private final JavaMailSender mailSender;
 
-	
-
-	
 	//don't block client
 
 	@Override
@@ -40,7 +35,7 @@ public class EmailService implements EmailSender {
 	            helper.setText(email, true);
 	            helper.setTo(to);
 	            helper.setSubject("Confirm your email");
-	            helper.setFrom("bronwyn93@gmail.com");
+	            helper.setFrom("noreplay@WhatToEat.com");
 	            mailSender.send(mimeMessage);
 	        } catch (MessagingException e) {
 	            LOGGER.error("failed to send email", e);

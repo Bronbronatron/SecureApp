@@ -43,18 +43,15 @@
 		<form action="#" th:action="@{/homepage/showresult}" th:object="${dishsearch}" method="POST">
 		<div class="col-sm-10 offset-sm-1 text-c
 		enter">
-		
-			  <input type="text" th:field="*{dname}"
+	
+	
+	<input type="text" th:field="*{dname}"
 				placeholder="Dish Name" class="form-control mb-4 col-10">
 				
-		<input type="text" th:field="*{app.city}"
-				placeholder="City Name" class="form-control mb-4 col-10">
-				
-		 <input hidden="text" th:field="*{app.id}"
-				placeholder="id" class="form-control mb-4 col-10">
-
+	<input type="text" th:field="*{app.city}"
+				placeholder="Dish Name" class="form-control mb-4 col-10">
 		
-	<div class="form-check form-check-inline">
+	<div class="form-check-inline">
   
    <label class=" form-check-label" for="inlineCheckbox1 ">Vegan?</label>
    <input type="checkbox" th:field="*{vegan}" />
@@ -64,8 +61,15 @@
    
    <label class="form-check-label" for="inlineCheckbox1">Egg Free?</label>
    <input type="checkbox" th:field="*{eggFree}" />
+   
+   		 <input hidden="text" th:field="*{app.id}"
+				placeholder="id" class="form-control mb-4 col-10">
+				
+   
    </div>
    	</div>
+   	
+   		 
    <br>
    <br>
    
