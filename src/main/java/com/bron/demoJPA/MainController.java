@@ -41,6 +41,14 @@ public class MainController {
 
 	}
 	
+	@GetMapping("/hello")
+	public String HelloHome() {
+		return "Registration_confirmed";
+
+	}
+	
+	
+	
 	@GetMapping("/admin/home")
 	public String admin(Model model) {
 		AppUser appUser = (AppUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();

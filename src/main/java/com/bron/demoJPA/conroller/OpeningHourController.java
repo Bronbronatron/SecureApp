@@ -62,7 +62,7 @@ public class OpeningHourController {
 	}
 	
 	
-	@GetMapping("/homepage/showOpening/{openingHourID}")
+	@GetMapping("/homepage/showOpening/{{id}}")
 	public String showOpening(@PathVariable(value = "openingHourID") long openingHourID, Model model) {
 		OpeningHour openingHour = openingHourService.getOpeningHourByOpeningHourID(openingHourID);
 		model.addAttribute("openinghour", openingHour);

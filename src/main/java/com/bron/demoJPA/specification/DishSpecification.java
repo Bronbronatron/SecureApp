@@ -42,19 +42,14 @@ public class DishSpecification implements Specification<Dish> {
 		final List<Predicate> predicates = new ArrayList<Predicate>();
 		
 		if (criteria.getDname() != "") {
-			predicates.add(cb.equal(dname, criteria.getDname()));
+			predicates.add(cb.like(dname, "%" + criteria.getDname() +"%"));
 		}
-		
 		if(criteria.getApp().getCity() != "") {
 			  predicates.add(cb.equal(city, criteria.getApp().getCity()));
 			 }
-	
-		
 		if (criteria.isEggFree() != false) {
 			predicates.add(cb.equal(eggFree, criteria.isEggFree()));
 		}
-
-
 		if (criteria.isVegan() != false) {
 			predicates.add(cb.equal(vegan, criteria.isVegan()));
 		}
@@ -62,9 +57,6 @@ public class DishSpecification implements Specification<Dish> {
 		if (criteria.isGlutenFree() != false) {
 			predicates.add(cb.equal(glutenFree, criteria.isGlutenFree()));
 		}
-		
-		 
-
 
 		return cb.and(predicates.toArray(new Predicate[predicates.size()]));
 

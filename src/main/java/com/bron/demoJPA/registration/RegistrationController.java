@@ -26,7 +26,7 @@ public class RegistrationController {
 	@PostMapping("/api/v1/registration")
 	public String registration(@ModelAttribute("request") RegistrationRequest request) {
 		registrationService.register(request);
-		return "redirect:/home";
+		return "redirect:/homepage";
 	}
 
 	@GetMapping(path = "/api/v1/registration/confirm")
