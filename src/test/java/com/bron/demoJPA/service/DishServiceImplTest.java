@@ -75,7 +75,7 @@ class DishServiceImplTest {
 		Assert.assertEquals(captoredDish, d);
 	}
 	
-
+	@Disabled
 	@Test
 	void testGetDishByDishId() {
 		Dish d = Dish.builder()	

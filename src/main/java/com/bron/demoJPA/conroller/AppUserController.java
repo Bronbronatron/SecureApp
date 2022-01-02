@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.bron.demoJPA.appuser.AppUser;
 import com.bron.demoJPA.appuser.Dish;
+import com.bron.demoJPA.appuser.OpeningHour;
 import com.bron.demoJPA.registration.RegistrationRequest;
 import com.bron.demoJPA.registration.token.ConfirmationTokenRepository;
 import com.bron.demoJPA.repository.AppUserRepository;
@@ -69,7 +70,21 @@ public class AppUserController {
 			return "redirect:/admin/appuser/view";
 			}
 	
-	
+	@GetMapping("/homepage/showAppOpening/{id}")
+	public String showOpening(@PathVariable(value = "id") long id, Model model) {
+		// get dish from service
+	    AppUser appUser =  userService.getAppUserById(id);
+	    OpeningHour openinghour = appUser.getOpening();
+	    if (openinghour != null){
+		// set dish as model to pre-populate the form data
+		model.addAttribute("openinghour", openinghour);
+		return "Main_Rest_OpeningHours";
+	    }
+	    else {
+	    	return "error-openinghour_not_found";
+	    }
+	    	
+	}
 }
 	
 

@@ -26,8 +26,6 @@ public class OpeningHourController {
 	@Autowired
 	private OpeningHourRepository openingHourRepository;
 	
-	@Autowired
-	private AppUserRepository app;
 	
 	@GetMapping("/user/openinghour/add")
 	public String showOpeningHourForm (Model model) {
@@ -50,8 +48,7 @@ public class OpeningHourController {
 				return "user_openinghours_update";
 
 			}
-
-	
+			
 	@GetMapping("/user/openinghours/view")
 	public String viewOpeningPage(Model model){
 		AppUser user = (AppUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -62,14 +59,4 @@ public class OpeningHourController {
 	}
 	
 	
-	@GetMapping("/homepage/showOpening/{{id}}")
-	public String showOpening(@PathVariable(value = "openingHourID") long openingHourID, Model model) {
-		OpeningHour openingHour = openingHourService.getOpeningHourByOpeningHourID(openingHourID);
-		model.addAttribute("openinghour", openingHour);
-		return "Main_Rest_OpeningHours";
-
-	}
 }
-		
-
-	
