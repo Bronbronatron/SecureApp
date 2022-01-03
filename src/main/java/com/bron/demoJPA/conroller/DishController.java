@@ -1,6 +1,5 @@
 package com.bron.demoJPA.conroller;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -18,27 +17,20 @@ import com.bron.demoJPA.specification.DishSearch;
 
 @Controller
 public class DishController {
-//display list of employees
-	
+
+
 	@Autowired
 	private DishService dishService;
-	
+
 	@Autowired
 	private DishRepository dishRepo;
 
-	
-	
 	@PostMapping("/user/saveDish")
-	public String saveUser(@ModelAttribute("dish")Dish dish) {
-			dishService.saveDishWithUserId(dish);	
-			return "redirect:/user/dish/view";
-			}
-	
-	
-	
-	
-	
-	
+	public String saveUser(@ModelAttribute("dish") Dish dish) {
+		dishService.saveDishWithUserId(dish);
+		return "redirect:/user/dish/view";
+	}
+
 	@GetMapping("/user/dish/add")
 	public String showNewDishForm(Model model) {
 		// Create model attribute to bind form data
@@ -46,25 +38,12 @@ public class DishController {
 		model.addAttribute("dish", dish);
 		return "user_dish_save";
 	}
-	
-	
 
-
-	
-	
-	
-	
 	@PostMapping("/admin/saveDish")
-	public String adminSaveDish(@ModelAttribute("dish")Dish dish) {
-			dishService.saveDishWithUserId(dish);	
-			return "redirect:/admin/dish/view";
-			}
-	
-	
-	
-	
-	
-	
+	public String adminSaveDish(@ModelAttribute("dish") Dish dish) {
+		dishService.saveDishWithUserId(dish);
+		return "redirect:/admin/dish/view";
+	}
 
 	@GetMapping("/user/dish/view")
 	public String viewHomePage(Model model) {
@@ -73,19 +52,12 @@ public class DishController {
 		model.addAttribute("listDish", dishRepo.getDishByRestaurantID(id));
 		return "user_dish_index";
 	}
-	
-	
-	
 
 	@GetMapping("/admin/dish/view")
 	public String viewAllDish(Model model) {
 		model.addAttribute("listDish", dishRepo.findAll());
 		return "Admin_Dish_Index";
 	}
-	
-
-
-	
 
 	@GetMapping("/showFormForUpdate/{dishId}")
 	public String showFormForUpdate(@PathVariable(value = "dishId") long dishId, Model model) {
@@ -95,8 +67,7 @@ public class DishController {
 		model.addAttribute("dish", dish);
 		return "user_dish_save";
 	}
-	
-	
+
 	@GetMapping("/adminShowFormForUpdate/{dishId}")
 	public String adminShowFormForUpdate(@PathVariable(value = "dishId") long dishId, Model model) {
 		// get dish from service
@@ -105,27 +76,19 @@ public class DishController {
 		model.addAttribute("dish", dish);
 		return "Admin_dish_save";
 	}
-	
-	
+
 	@GetMapping("/deleteDish/{dishId}")
 	public String deleteDish(@PathVariable(value = "dishId") long dishId, Model model) {
 		this.dishService.deleteDishById(dishId);
 		return "redirect:/user/dish/view";
-		
+
 	}
-	
-	
-	
+
 	@GetMapping("/admin/deleteDish/{dishId}")
 	public String adminDeleteDish(@PathVariable(value = "dishId") long dishId, Model model) {
 		this.dishService.deleteDishById(dishId);
 		return "redirect:/admin/dish/view";
-		
+
 	}
-	
-
-
-	
-	
 
 }

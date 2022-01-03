@@ -5,7 +5,6 @@ import java.time.LocalDateTime;
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PostMapping;
 
 import com.bron.demoJPA.appuser.AppUserService;
 import com.bron.demoJPA.email.EmailSender;
@@ -13,7 +12,6 @@ import com.bron.demoJPA.registration.token.ConfirmationToken;
 import com.bron.demoJPA.registration.token.ConfirmationTokenService;
 import com.bron.demoJPA.appuser.AppUser;
 import com.bron.demoJPA.appuser.AppUserRole;
-import com.bron.demoJPA.appuser.AppUserService;
 
 import lombok.AllArgsConstructor;
 
@@ -33,9 +31,9 @@ public class RegistrationService {
 			throw new IllegalStateException("email not valid");
 		}
 
-		String token = appUserService.signUpUser(
-				new AppUser(request.getRestaurantName(), request.getEmail(), request.getPassword(), AppUserRole.USER,  request.getPhoneNumber(),
-						request.getAddressOne(), request.getAddressTwo(), request.getCity(), request.getPostcode()));
+		String token = appUserService.signUpUser(new AppUser(request.getRestaurantName(), request.getEmail(),
+				request.getPassword(), AppUserRole.USER, request.getPhoneNumber(), request.getAddressOne(),
+				request.getAddressTwo(), request.getCity(), request.getPostcode()));
 
 		String link = "http://localhost:8080/api/v1/registration/confirm?token=" + token;
 
@@ -64,8 +62,6 @@ public class RegistrationService {
 		return "Registration_confirmed";
 	}
 
-	
-	
 	private String buildEmail(String name, String link) {
 		return "<div style=\"font-family:Helvetica,Arial,sans-serif;font-size:16px;margin:0;color:#0b0c0c\">\n" + "\n"
 				+ "<span style=\"display:none;font-size:1px;color:#fff;max-height:0\"></span>\n" + "\n"
@@ -103,5 +99,3 @@ public class RegistrationService {
 				+ "  </tbody></table><div class=\"yj6qo\"></div><div class=\"adL\">\n" + "\n" + "</div></div>";
 	}
 }
-
-

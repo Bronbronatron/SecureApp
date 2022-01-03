@@ -11,19 +11,19 @@ import com.bron.demoJPA.repository.AppUserRepository;
 
 @Service
 public class AppUserServiceImpl implements AppUserService {
-	
+
 	@Autowired
 	AppUserRepository userRepository;
 
 	@Override
 	public List<AppUser> getAllAppUser() {
-		
+
 		return userRepository.findAll();
 	}
 
 	@Override
 	public AppUser getAppUserById(long id) {
-		
+
 		Optional<AppUser> optional = userRepository.findById(id);
 		AppUser user = null;
 		if (optional.isPresent()) {
@@ -37,7 +37,7 @@ public class AppUserServiceImpl implements AppUserService {
 	@Override
 	public void saveAppUserById(AppUser user) {
 		this.userRepository.save(user);
-		
+
 	}
 
 	@Override
@@ -46,4 +46,3 @@ public class AppUserServiceImpl implements AppUserService {
 	}
 
 }
-

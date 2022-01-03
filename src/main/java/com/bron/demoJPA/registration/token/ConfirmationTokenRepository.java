@@ -12,26 +12,16 @@ import java.util.Optional;
 @Transactional(readOnly = true)
 public interface ConfirmationTokenRepository extends JpaRepository<ConfirmationToken, Long> {
 
-    Optional<ConfirmationToken> findByToken(String token);
+	Optional<ConfirmationToken> findByToken(String token);
 
-    @Transactional
-    @Modifying
-	@Query(
-				value = "update confirmation_token set comfirmed_at = ?1 where token = ?2",
-				nativeQuery = true
-				)
-    int updateConfirmedAt(LocalDateTime confirmedAt,
-            String token);
-    
-	  @Transactional
-	  @Modifying
-	  @Query(
-				value = "delete from confirmation_token t where rest_id= ?1", nativeQuery = true
-				)
-	  void deleteTokenByRestaurantID(Long id);
-	  
-		    
-    
+	@Transactional
+	@Modifying
+	@Query(value = "update confirmation_token set comfirmed_at = ?1 where token = ?2", nativeQuery = true)
+	int updateConfirmedAt(LocalDateTime confirmedAt, String token);
+
+	@Transactional
+	@Modifying
+	@Query(value = "delete from confirmation_token t where rest_id= ?1", nativeQuery = true)
+	void deleteTokenByRestaurantID(Long id);
+
 }
-
-

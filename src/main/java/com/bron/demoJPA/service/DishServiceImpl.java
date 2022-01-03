@@ -3,16 +3,12 @@ package com.bron.demoJPA.service;
 import java.util.List;
 import java.util.Optional;
 
-import javax.persistence.EntityManager;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import com.bron.demoJPA.appuser.AppUser;
 import com.bron.demoJPA.appuser.Dish;
-import com.bron.demoJPA.appuser.OpeningHour;
 import com.bron.demoJPA.repository.DishRepository;
 
 @Service
@@ -22,7 +18,7 @@ public class DishServiceImpl implements DishService {
 	private DishRepository dishRepository;
 
 	public DishServiceImpl(DishRepository dishRepository2) {
-		this.dishRepository =  dishRepository2;
+		this.dishRepository = dishRepository2;
 	}
 
 	@Override
@@ -42,10 +38,9 @@ public class DishServiceImpl implements DishService {
 		return dish;
 	}
 
-
 	@Override
 	public void saveDishWithUserId(Dish dish) {
-	 	Object principal = (AppUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		Object principal = (AppUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		AppUser app = dish.getApp();
 		app = (AppUser) principal;
 		dish.setApp(app);
@@ -57,16 +52,9 @@ public class DishServiceImpl implements DishService {
 		this.dishRepository.deleteById(Id);
 	}
 
-	
 	@Override
 	public void saveDish(Dish dish) {
 		this.dishRepository.save(dish);
 	}
-
-//	@Override
-//	public void saveDishById(Dish dish) {
-//		this.dishRepository.save(dish);
-		
-	//}
 
 }

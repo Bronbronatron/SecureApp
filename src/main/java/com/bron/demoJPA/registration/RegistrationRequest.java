@@ -1,8 +1,5 @@
 package com.bron.demoJPA.registration;
 
-import javax.persistence.Column;
-
-
 import com.bron.demoJPA.appuser.AppUserRole;
 
 import lombok.EqualsAndHashCode;
@@ -18,18 +15,18 @@ import lombok.ToString;
 @Setter
 
 public class RegistrationRequest {
-	private  String restaurantName;
-	private  String email;
-	private  String password;
-	private  AppUserRole role;
-	private  String phoneNumber;
+	private String restaurantName;
+	private String email;
+	private String password;
+	private AppUserRole role;
+	private String phoneNumber;
 	private String addressOne;
 	private String addressTwo;
 	private String city;
 	private String postcode;
 
-	public RegistrationRequest(String restaurantName, String email, String password, AppUserRole role, String phonenumber, 
-			String addressOne, String addressTwo, String city, String postcode) {
+	public RegistrationRequest(String restaurantName, String email, String password, AppUserRole role,
+			String phonenumber, String addressOne, String addressTwo, String city, String postcode) {
 		super();
 		this.restaurantName = restaurantName;
 		this.email = email;
@@ -42,6 +39,5 @@ public class RegistrationRequest {
 		this.postcode = postcode;
 
 	}
-	
-	
+
 }

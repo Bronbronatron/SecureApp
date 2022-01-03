@@ -1,7 +1,6 @@
 
 package com.bron.demoJPA;
 
-
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,17 +14,17 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class MainController {
 
+	//Main home page
 	@GetMapping("/homepage")
 	public String showRestaurantHomePage() {
 		return "Main_home";
-
 	}
-	
+	//Logout Success
 	@GetMapping("/homepage/logoutsuccess")
 	public String ShowLogout() {
 		return "Main_Logout_successful";
 	}
-	
+	//User home page
 	@GetMapping("/user/home")
 	public String showMainHomePage(Model model) {
 		AppUser appUser = (AppUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -33,30 +32,13 @@ public class MainController {
 		return "user_home_page";
 
 	}
-	
-	
-	@GetMapping("/userDetails")
-	public String showUserDetailsHome() {
-		return "user_details";
-
-	}
-	
-	@GetMapping("/hello")
-	public String HelloHome() {
-		return "Registration_confirmed";
-
-	}
-	
-	
-	
+	//Admin home page
 	@GetMapping("/admin/home")
 	public String admin(Model model) {
 		AppUser appUser = (AppUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		model.addAttribute("appUser", appUser);
-			return "Admin_home";
-		
-	}
-	
+		return "Admin_home";
 
-	
+	}
+
 }
