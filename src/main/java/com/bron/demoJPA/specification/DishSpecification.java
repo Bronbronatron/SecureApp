@@ -32,8 +32,9 @@ public class DishSpecification implements Specification<Dish> {
 
 		Path<AppUser> app = root.get(Dish_.app);
 		Path<String> city = app.get(AppUser_.city);
-		
+		Path<String> rname = app.get(AppUser_.restaurantName);
 		Path<String> dname = root.get(Dish_.dname);
+		
 		Path<Boolean> eggFree = root.get(Dish_.eggFree);
 		Path<Boolean> vegan = root.get(Dish_.vegan);
 		
@@ -46,6 +47,9 @@ public class DishSpecification implements Specification<Dish> {
 		}
 		if(criteria.getApp().getCity() != "") {
 			  predicates.add(cb.equal(city, criteria.getApp().getCity()));
+			 }
+		if(criteria.getApp().getRestaurantName() != "") {
+			  predicates.add(cb.like(rname, "%" + criteria.getApp().getRestaurantName() + "%"));
 			 }
 		if (criteria.isEggFree() != false) {
 			predicates.add(cb.equal(eggFree, criteria.isEggFree()));
